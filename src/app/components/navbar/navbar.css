@@ -1,0 +1,44 @@
+.navbar {
+  background-color: #161616;
+}
+
+.navbar-collapse {
+  background-color: #161616 !important;
+}
+
+.text-orange {
+  color: #a15a0b;
+}
+
+.btn-orange {
+  background-color: #ff5c00;
+  transition: all 0.3s;
+}
+.btn-orange:hover {
+  background-color: #e65300;
+}
+
+.search-icon {
+  border: 1px solid transparent !important;
+  transition: all 0.3s;
+}
+.search-icon:hover {
+  cursor: pointer;
+  color: #ff5c00 !important;
+  border: #a15a0b solid 1px !important;
+}
+
+.custom-nav-pill {
+  border: 1px solid #333;
+}
+.custom-nav-pill .nav-link {
+  color: #aaa;
+  transition: all 0.3s;
+}
+.custom-nav-pill .nav-link:hover {
+  color: white;
+}
+.active-pill {
+  background-color: #ff5c00;
+  color: white !important;
+}

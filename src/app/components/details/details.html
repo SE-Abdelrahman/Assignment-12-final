@@ -1,0 +1,284 @@
+@if (article) {
+  <section
+    class="article-hero position-relative px-4 d-flex align-items-center overflow-hidden"
+    dir="ltr"
+  >
+    <div class="hero-bg-wrapper position-absolute w-100 h-100 z-1 top-0 start-0">
+      <img
+        [src]="article.image"
+        class="hero-bg-img w-100 h-100 object-fit-cover"
+        alt="Background"
+      />
+      <div class="hero-gradient-overlay position-absolute top-0 start-0 w-100 h-100"></div>
+    </div>
+
+    <div class="container position-relative px-4 z-3 z py-5">
+      <div class="row">
+        <div>
+          <nav class="breadcrumb-nav mb-5 d-flex justify-content-end">
+            <ol
+              class="breadcrumb-custom list-unstyled d-flex align-items-center gap-2 px-3 py-2 rounded-pill"
+            >
+              <li class="text-orange fw-bold">{{ article.category }}</li>
+              <li class="text-white-50"><i class="fas fa-chevron-left small"></i></li>
+              <li>
+                <a routerLink="/blog" class="icon-blog text-secondary text-decoration-none"
+                  >المدونة</a
+                >
+              </li>
+              <li class="text-white-50"><i class="fas fa-chevron-left small"></i></li>
+              <li>
+                <a routerLink="/home"><i class="home-icon fas fa-home text-secondary"></i></a>
+              </li>
+            </ol>
+          </nav>
+
+          <div dir="rtl" class="col-lg-10 pe-4">
+            <div class="article-meta-data d-flex align-items-center gap-4 mb-4 text-white-50">
+              <span class="badge-cat bg-orange text-white px-3 py-1 rounded-pill fw-bold">{{
+                article.category
+              }}</span>
+              <span class="meta-item"
+                ><i class="far fa-calendar-alt ms-2 text-orange"></i> {{ article.date }}</span
+              >
+              <span class="meta-item"
+                ><i class="far fa-clock ms-2 text-orange"></i> {{ article.readTime }}</span
+              >
+            </div>
+
+            <h1 class="article-display-title display-4 text-white fw-bold mb-4">
+              {{ article.title }}
+            </h1>
+
+            <div class="author-glass-card d-inline-flex align-items-center p-3 rounded-4" dir="ltr">
+              <div class="author-text text-end me-3">
+                <h6 class="m-0 text-white fw-bold">{{ article.author.name }}</h6>
+                <p class="m-0 text-white-50 small">{{ article.author.role }}</p>
+              </div>
+              <div class="author-avatar-wrapper position-relative">
+                <img
+                  [src]="article.author.avatar"
+                  class="author-avatar rounded-circle object-fit-cover"
+                  alt="Author"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="article-content-area py-5 px-4 border-bottom border-secondary">
+    <div class="container px-4">
+      <div class="row g-5">
+        <div class="col-lg-4">
+          <div class="st sticky-top top-0">
+            <div class="sidebar-card rounded-3 mb-4" dir="rtl">
+              <div class="card-header-orange p-3 fw-bold d-flex align-items-center gap-2">
+                <i class="alt-icon fas fa-list-ul rounded-3 p-2 text-orange"></i>
+                <span class="text-light">محتويات المقال</span>
+              </div>
+              <ul class="content-list list-unstyled px-3">
+                @for (section of getParsedContent(); track $index) {
+                  @if (section.title) {
+                    <li class="item-list p-2 mb-1 d-flex align-items-center rounded-3 gap-2">
+                      <span
+                        class="step-num text-secondary rounded-2 small d-flex align-items-center justify-content-center"
+                        >{{ $index }}</span
+                      >
+                      <a class="text-decoration-none text-secondary">{{ section.title }}</a>
+                    </li>
+                  }
+                }
+              </ul>
+            </div>
+
+            <div class="row g-3 mb-4">
+              <div class="col-6">
+                <div class="info-mini-card rounded-3 text-center p-3">
+                  <i class="far fa-calendar-alt fs-5 text-orange mb-2"></i>
+                  <h6 class="text-white m-0 mb-1">{{ article.date }}</h6>
+                  <small class="text-secondary">تاريخ النشر</small>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="info-mini-card rounded-3 text-center p-3" dir="rtl">
+                  <i class="far fa-clock text-orange fs-5 mb-2"></i>
+                  <h6 class="text-white m-0 mb-1">{{ article.readTime }}</h6>
+                  <small class="text-secondary">وقت القراءة</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="newsletter-card text-center rounded-3 p-4">
+              <span
+                class="alt-icon-2 rounded-3 d-inline-flex d-flex justify-content-center align-items-center mb-3"
+              >
+                <i class="far fa-envelope fs-3 text-light"></i>
+              </span>
+              <h5 class="text-white">لا تفوت جديدنا</h5>
+              <p class="text-secondary small">اشترك للحصول على أحدث المقالات</p>
+              <button class="btn btn-orange bg-orange fw-bold text-light w-100 rounded-pill">
+                تصفح المزيد
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-8">
+          <div class="excerpt-quote mb-4 p-4 rounded-4 text-light" dir="rtl">
+            <p class="m-0 fst-italic">"{{ article.excerpt }}"</p>
+          </div>
+
+          @for (section of getParsedContent(); track $index) {
+            <div class="article-section mb-5">
+              @if (section.title) {
+                <h2
+                  class="section-title position-relative text-light d-flex align-items-center justify-content-end gap-2 mb-4"
+                >
+                  {{ section.title }}
+                  <i class="fas fa-camera text-orange fs-3"></i>
+                </h2>
+              }
+              <div class="section-body text-secondary lh-lg h6" dir="rtl">
+                {{ section.text }}
+              </div>
+            </div>
+          }
+
+          <div class="article-footer-card p-4 rounded-3 mb-3" dir="rtl">
+            <div class="d-flex align-items-center mb-3">
+              <div
+                class="footer-card-icon ms-2 rounded-3 text-orange d-flex align-items-center justify-content-center"
+              >
+                <i class="fas fa-tags"></i>
+              </div>
+              <h5 class="text-white m-0 fw-bold">الوسوم</h5>
+            </div>
+            <div class="d-flex flex-wrap gap-2">
+              @for (tag of article.tags; track tag) {
+                <span class="article-tag-item text-secondary rounded-pill">#{{ tag }}</span>
+              }
+            </div>
+          </div>
+
+          <div
+            class="article-footer-card p-4 rounded-3 mb-3 d-flex justify-content-between align-items-center"
+            dir="rtl"
+          >
+            <div class="d-flex align-items-center mb-3">
+              <div
+                class="footer-card-icon ms-2 rounded-3 text-orange d-flex align-items-center justify-content-center"
+              >
+                <i class="fas fa-share-alt"></i>
+              </div>
+              <h5 class="text-white m-0 fw-bold">شارك المقال</h5>
+            </div>
+            <div class="d-flex gap-3 justify-content-end">
+              <a
+                href="#"
+                class="share-btn-l share-btn-circle rounded-3 text-decoration-none d-flex justify-content-center align-items-center"
+                ><i class="fas fa-link"></i
+              ></a>
+              <a
+                href="#"
+                class="share-btn-wp share-btn-circle rounded-3 text-decoration-none d-flex justify-content-center align-items-center"
+                ><i class="fab fa-whatsapp"></i
+              ></a>
+              <a
+                href="#"
+                class="share-btn-li share-btn-circle rounded-3 text-decoration-none d-flex justify-content-center align-items-center"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a
+                href="#"
+                class="share-btn-x share-btn-circle rounded-3 text-decoration-none d-flex justify-content-center align-items-center"
+                ><i class="fab fa-x-twitter"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="article-footer-card p-4 rounded-3">
+            <div class="row align-items-center">
+              <div class="col-md-9 text-end order-2 order-md-1">
+                <small class="text-orange fw-bold">كاتب المقال</small>
+                <h4 class="text-white fw-bold h5 mt-2 mb-1">{{ article.author.name }}</h4>
+                <p class="text-secondary small mb-2">{{ article.author.role }}</p>
+                <p class="text-secondary m-0 lh-lg">
+                  مصور محترف شغوف بمشاركة المعرفة والخبرات في عالم التصوير الفوتوغرافي
+                </p>
+              </div>
+              <div class="col-md-3 text-center order-1 order-md-2 mb-3 mb-md-0">
+                <img
+                  [src]="article.author.avatar"
+                  class="author-img-large rounded-4 object-fit-cover"
+                  alt="Author"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+}
+
+<section class="related-articles py-5 px-4">
+  <div class="container px-4">
+    <div class="d-flex align-items-center justify-content-between mb-4 flex-row-reverse">
+      <div class="d-flex align-items-center gap-3">
+        <div class="text-end">
+          <h3 class="text-white fw-bold m-0">مقالات قد تعجبك</h3>
+          <p class="text-secondary m-0">استكشف المزيد من المحتوى المميز</p>
+        </div>
+        <div class="orange-icon-box p-2 rounded-3">
+          <i class="far fa-images fs-5 text-orange"></i>
+        </div>
+      </div>
+      <a
+        routerLink="/blog"
+        class="text-orange text-decoration-none fw-bold d-flex align-items-center gap-2"
+      >
+        <i class="fas fa-arrow-left"></i> عرض الكل
+      </a>
+    </div>
+
+    <div class="row g-4 flex-row-reverse">
+      @for (relArticle of getRelatedArticles(); track relArticle.id) {
+        <div class="col-lg-4 col-md-6">
+          <div
+            class="card bg-black text-white rounded-4 overflow-hidden position-relative h-100 shadow"
+          >
+            <div class="card-img position-relative overflow-hidden">
+              <img [src]="relArticle.image" class="card-img-top object-fit-cover w-100" alt="..." />
+              <span
+                class="badge bg-orange rounded-pill py-2 px-3 position-absolute top-0 end-0 m-3"
+                style="z-index: 2"
+              >
+                {{ relArticle.category }}
+              </span>
+              <div class="image-alt position-absolute top-0 start-0 w-100 h-100"></div>
+            </div>
+            <div class="card-body p-4 text-end">
+              <h5 class="card-title fw-bold text-light mb-3">{{ relArticle.title }}</h5>
+              <div
+                class="d-flex align-items-center justify-content-between flex-row-reverse text-secondary small"
+              >
+                <div class="d-flex align-items-center gap-2">
+                  <span class="text-secondary">{{ relArticle.author.name }}</span>
+                  <img [src]="relArticle.author.avatar" class="rounded-circle" width="25" />
+                </div>
+                <span class="text-secondary" dir="rtl">{{ relArticle.readTime }}</span>
+              </div>
+            </div>
+            <a [routerLink]="['/blog', relArticle.slug]" class="stretched-link"></a>
+          </div>
+        </div>
+      }
+      @if (getRelatedArticles().length === 0) {
+        <p class="text-secondary text-center w-100">لا توجد مقالات مشابهة حالياً.</p>
+      }
+    </div>
+  </div>
+</section>

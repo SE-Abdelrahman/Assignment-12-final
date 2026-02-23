@@ -1,0 +1,339 @@
+.hero-section {
+  background-color: #0a0a0a;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 40px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 20px);
+  background-size: 80px 80px;
+  padding: 80px 0;
+}
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255, 92, 0, 0.15) 0%, transparent 70%);
+}
+
+.text-orange {
+  color: #ff6600;
+}
+
+.hero-badge {
+  background-color: rgba(255, 102, 0, 0.1);
+  border: 1px solid rgba(255, 102, 0, 0.3);
+}
+
+.dot {
+  height: 6px;
+  width: 6px;
+  background-color: #ff6600;
+}
+.btn-hover {
+  transition: all 0.3s;
+}
+.btn-hover:hover {
+  background-color: rgba(255, 102, 0, 0.1);
+  color: #ff6600;
+  border: 1px solid rgba(255, 102, 0, 0.3);
+}
+
+.stat-card {
+  background: #141414;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s;
+}
+.stat-card h3 {
+  color: #d77839;
+}
+.stat-card:hover {
+  background-color: rgba(255, 102, 0, 0.1);
+  transform: scale(105%);
+  border: 1px solid rgba(255, 102, 0, 0.3);
+}
+
+.btn-orange {
+  background-color: #ff6600;
+  transition: all 0.3s;
+}
+.btn-orange:hover {
+  background-color: #e65300;
+}
+
+/* .................................. */
+
+.articles-section {
+  background-color: #111111;
+}
+
+.main-article-card {
+  background-color: #121212;
+  border: 1px solid #222;
+  transition: all 0.3s;
+}
+.main-article-card:hover {
+  cursor: pointer;
+  border: 1px solid #ff6600;
+}
+.main-article-card h3 {
+  transition: all 0.3s;
+}
+.main-article-card:hover h3 {
+  color: #ff6600 !important;
+}
+.main-article-card .read-more-link span {
+  transition: all 0.3s;
+}
+.main-article-card:hover .read-more-link span {
+  transform: translateX(10px);
+}
+
+.main-article-card .article-main-img {
+  transition: all 0.3s;
+}
+.main-article-card:hover .article-main-img {
+  transform: scale(1.1);
+}
+
+.badge-category {
+  background-color: rgba(255, 102, 0, 0.1);
+  color: #ff6600;
+  border: 1px solid rgba(255, 102, 0, 0.3);
+  font-size: 14px;
+}
+
+.author-img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 2px solid #ff6600;
+}
+
+.status-dot {
+  bottom: -3px;
+  left: 1px;
+  width: 12px;
+  height: 12px;
+  background-color: #ff5c00;
+  border: 1px solid #0d0d0d;
+  z-index: 2;
+}
+.status-dot::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #ff5c00;
+  opacity: 0.4;
+  animation: pulse-dot 2s infinite;
+}
+@keyframes pulse-dot {
+  0% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+.badge-top-right {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(to right, #ff7000, #f99900) !important;
+  padding: 5px 15px;
+  font-size: 0.8125rem;
+  backdrop-filter: blur(5px);
+}
+
+/* Responsive adjustment */
+@media (max-width: 768px) {
+  .main-article-card {
+    height: auto;
+  }
+  .article-main-img {
+    height: 250px;
+  }
+}
+.dot {
+  height: 6px;
+  width: 6px;
+  background-color: #ff6600;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 5px;
+  vertical-align: middle;
+}
+
+/* ................................. */
+
+.categories-section {
+  background-color: #131313;
+}
+
+.category-card {
+  background-color: #1b1b1b;
+  border: 1px solid #323232;
+  transition: all 0.3s;
+}
+.category-card:hover {
+  cursor: pointer;
+  background: linear-gradient(to right, #ff7000, #f99900) !important;
+  transform: translateY(-4px);
+}
+
+.category-card .icon-wrap {
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255, 102, 0, 0.1);
+  border: 1px solid rgba(255, 102, 0, 0.3);
+  transition: all 0.3s;
+}
+.category-card:hover .icon-wrap {
+  background-color: #fd8933;
+  color: white !important;
+  border: 1px solid transparent;
+}
+
+/* ........................ */
+
+.latest-articles-section {
+  background-color: #000;
+}
+
+.article-glass-card {
+  background-color: #0d0d0d;
+  border: 1px solid #1a1a1a;
+  transition: all 0.3s;
+}
+.article-glass-card:hover {
+  cursor: pointer;
+  border: 1px solid #ff5c00;
+  transform: translateY(-7px);
+}
+
+.article-img-box {
+  height: 220px;
+}
+.article-img-box img {
+  transition: transform 0.3s;
+}
+.article-glass-card:hover .article-img-box img {
+  transform: scale(1.1);
+}
+
+.article-tag {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  padding: 4px 14px;
+  font-size: 10px;
+}
+
+.article-title {
+  transition: all 0.3s;
+}
+.article-glass-card:hover .article-title {
+  color: #ff5c00;
+}
+
+.author-img-small {
+  width: 38px;
+  height: 38px;
+  border: 1px solid #ff5c00;
+}
+
+.circle-arrow-btn {
+  width: 35px;
+  height: 35px;
+  background-color: rgba(255, 102, 0, 0.1);
+  border: 1px solid rgba(255, 102, 0, 0.3);
+  transition: all 0.3s;
+}
+.article-glass-card:hover .circle-arrow-btn {
+  background-color: #ff5c00;
+  color: #fff;
+  border-color: #ff5c00;
+}
+
+/* ............................... */
+
+.newsletter-section {
+  background-color: #000;
+}
+
+.newsletter-card {
+  background-color: #0d0d0d;
+  border: 1px solid #222 !important;
+}
+
+.newsletter-section::before {
+  content: '';
+  position: absolute;
+  transform: translate(-50%, -50%);
+
+  width: 600px;
+  height: 400px;
+
+  background: radial-gradient(
+    circle,
+    rgb(255 94 0 / 20%) 0%,
+    rgb(255 92 0 / 10%) 40%,
+    transparent 70%
+  );
+  filter: blur(50px);
+}
+
+.mail-icon-wrap {
+  width: 65px;
+  height: 65px;
+  background: linear-gradient(to bottom, #ff5c00 0%, #ff8a00 100%);
+}
+
+.subscribe-form input {
+  border: 1px solid #333;
+}
+.subscribe-form input:focus {
+  border-color: #ff5c00;
+  box-shadow: none;
+}
+.subscribe-form input::placeholder {
+  color: #555;
+}
+
+.overlap-img {
+  width: 32px;
+  height: 32px;
+  margin-left: -12px;
+  transition: all 0.3s;
+}
+.overlap-img:hover {
+  transform: translateY(-5px);
+  z-index: 10;
+}
+
+.text-orange-gradient {
+  background: linear-gradient(to right, #ff5c00 0%, #ff8a00 50%);
+  background-clip: text;
+  color: transparent;
+}
+
+.btn-orange-alt {
+  background-color: #ff5c00;
+  border: none;
+  white-space: nowrap;
+  transition: all 0.3s;
+  z-index: 1;
+}
+.btn-orange-alt:hover {
+  cursor: pointer !important;
+  background-color: #e65200 !important;
+}

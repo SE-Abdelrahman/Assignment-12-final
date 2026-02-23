@@ -1,0 +1,47 @@
+.not-found-section {
+  background-color: #050505;
+}
+
+.error-code {
+  top: -30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  letter-spacing: 8px;
+}
+
+.camera-icon-wrapper {
+  animation: camera-shake 3s infinite ease-in-out;
+}
+
+@keyframes camera-shake {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-15px) rotate(5deg);
+  }
+}
+
+.text-orange {
+  color: #ff5c00;
+}
+
+.btn-back-home {
+  background-color: #ff5c00;
+  transition: all 0.3s;
+}
+
+.btn-back-home:hover {
+  cursor: pointer;
+  background-color: #c44800;
+}
+
+@media (max-width: 768px) {
+  .error-code {
+    font-size: 6rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+}

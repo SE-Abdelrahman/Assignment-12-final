@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  padding-top: 80px;
+}
+body::selection {
+  background-color: #f97316;
+  color: white;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
